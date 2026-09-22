@@ -5,7 +5,7 @@
 **Repository:** https://github.com/chenahistorillo4/ITE412_SIA2_TeamEight_PMSPort.git 
 
 ## Team Members & Roles  
-- Chena Mae Historillo — Documenter 
+- Chena Mae Historillo — Documention Lead 
 
 
 ## Project Summary

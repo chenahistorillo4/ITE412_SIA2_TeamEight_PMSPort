@@ -25,3 +25,15 @@ Port staff benefit from an admin dashboard for managing trips, reservations, and
   ```bash
   git clone https://github.com/chenahistorillo4/ITE412_SIA2_TeamEight_PMSPort.git 
   cd ITE412_SIA2_TeamEight_PMSPort
+
+  ## REST API
+
+### API Server
+
+The PMS PORT REST API was developed using Node.js and Express.js.
+
+To start the API server:
+
+```bash
+cd src/api
+node server.js

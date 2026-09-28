@@ -6,7 +6,8 @@
 
 ## Team Members & Roles  
 - Prinz Keanne Escototo — Project Lead 
-- Chena Mae Historillo — Documention Lead 
+- Chena Mae Historillo — Documention Lead
+- John Andrew Royo - Presentor 
 
 
 ## Project Summary

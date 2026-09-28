@@ -8,6 +8,7 @@
 - Prinz Keanne Escototo — Project Lead 
 - Chena Mae Historillo — Documention Lead 
 - John Andrew Royo - Presentor
+- Sherwin M. Cuenca - Diagramer
 
 ## Project Summary
 The PMS Port Ferry Booking Management System is a cloud-based platform designed for the Pinamalayan–Marinduque–Sibale route.  

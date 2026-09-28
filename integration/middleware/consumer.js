@@ -1,26 +1,32 @@
+const { receiveMessage, getQueueLength } = require("./queue");
+
 function processBookings() {
-    if (queue.length === 0) {
+    if (getQueueLength() === 0) {
         console.log("No booking requests in the queue.");
         return;
     }
 
     const booking = receiveMessage();
 
-    setTimeout(() => {
-        // Example approval rule
-        if (booking.amount <= 5000) {
-            console.log(
-                `Booking request for ${booking.passenger} → Approved`
-            );
-        } else {
-            console.log(
-                `Booking request for ${booking.passenger} → Rejected`
-            );
-        }
+    if (!booking) {
+        console.log("No booking requests in the queue.");
+        return;
+    }
 
-        // Process the next message
+    const passengerName = booking.passengerName || booking.passenger || "Unknown passenger";
+    const route = booking.route || booking.trip || "Unknown route";
+    const travelDate = booking.travelDate || "N/A";
+
+    setTimeout(() => {
+        const status = booking.amount <= 5000 ? "Approved" : "Rejected";
+
+        console.log(
+            `Booking request for ${passengerName} on ${route} (${travelDate}) → ${status}`
+        );
+
         processBookings();
     }, 1000);
 }
 
+console.log("Processing booking queue...\n");
 processBookings();

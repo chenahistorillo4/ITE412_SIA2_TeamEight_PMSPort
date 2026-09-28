@@ -1,0 +1,26 @@
+{
+  "name": "ite412_sia2_teameight_pmsport",
+  "version": "1.0.0",
+  "description": "**Course:** ITE412 – System Integration and Architecture 2  \r **Team Name:** TeamEight  \r **Repository:** https://github.com/chenahistorillo4/ITE412_SIA2_TeamEight_PMSPort.git",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chenahistorillo4/ITE412_SIA2_TeamEight_PMSPort.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/chenahistorillo4/ITE412_SIA2_TeamEight_PMSPort/issues"
+  },
+  "homepage": "https://github.com/chenahistorillo4/ITE412_SIA2_TeamEight_PMSPort#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

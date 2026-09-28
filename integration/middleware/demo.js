@@ -1,56 +1,59 @@
-const queue = [];
+const { sendMessage, receiveMessage, getQueueLength } = require("./queue");
 
 const bookings = [
     {
-        passenger: "Juan Dela Cruz",
+        passengerName: "Juan Dela Cruz",
         amount: 1500,
-        trip: "PMS-001"
+        route: "Pinamalayan - Marinduque",
+        travelDate: "2026-10-15",
+        status: "Pending"
     },
     {
-        passenger: "Maria Santos",
+        passengerName: "Maria Santos",
         amount: 3000,
-        trip: "PMS-002"
+        route: "Marinduque - Sibale",
+        travelDate: "2026-10-16",
+        status: "Pending"
     },
     {
-        passenger: "Pedro Reyes",
+        passengerName: "Pedro Reyes",
         amount: 6000,
-        trip: "PMS-003"
+        route: "Pinamalayan - Marinduque",
+        travelDate: "2026-10-17",
+        status: "Pending"
     }
 ];
 
-// PRODUCER
+console.log("\nProcessing booking queue...\n");
+
 bookings.forEach((booking) => {
-    queue.push(booking);
+    sendMessage(booking);
 
     console.log(
-        `Booking request submitted: {passenger: ${booking.passenger}, amount: ${booking.amount}, trip: ${booking.trip}}`
+        `Booking request submitted: {passengerName: ${booking.passengerName}, amount: ${booking.amount}, route: ${booking.route}, travelDate: ${booking.travelDate}, status: ${booking.status}}`
     );
 });
 
-// CONSUMER
 function processQueue() {
-    if (queue.length === 0) {
+    if (getQueueLength() === 0) {
         console.log("\nAll booking requests processed.");
         return;
     }
 
-    const booking = queue.shift();
+    const booking = receiveMessage();
+    const passengerName = booking.passengerName || booking.passenger || "Unknown passenger";
+    const route = booking.route || booking.trip || "Unknown route";
+    const travelDate = booking.travelDate || "N/A";
 
     setTimeout(() => {
-        if (booking.amount <= 5000) {
-            console.log(
-                `Booking request for ${booking.passenger} → Approved`
-            );
-        } else {
-            console.log(
-                `Booking request for ${booking.passenger} → Rejected`
-            );
-        }
+        const status = booking.amount <= 5000 ? "Approved" : "Rejected";
+
+        console.log(
+            `Booking request for ${passengerName} on ${route} (${travelDate}) → ${status}`
+        );
 
         processQueue();
     }, 1000);
 }
-
-console.log("\nProcessing booking queue...\n");
 
 processQueue();

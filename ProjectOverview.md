@@ -79,3 +79,7 @@ The API server runs locally using:
 
 ```text
 http://localhost:3000
+
+## Messaging Workflow
+
+The PMS Ferry Reservation and Ticketing System uses a simple in-memory message queue to demonstrate asynchronous communication between system modules. The Reservation Module acts as the producer by submitting ferry booking requests containing the passenger name, booking amount, and trip information into the queue. The Approval Module acts as the consumer and asynchronously retrieves booking requests from the queue one at a time. Each booking request is processed based on the defined approval rule, where requests with an amount of 5,000 or below are approved, while requests above 5,000 are rejected. This messaging workflow demonstrates how modules can exchange information without requiring direct synchronous communication. The prototype can later be extended to a production messaging system such as RabbitMQ or Kafka.

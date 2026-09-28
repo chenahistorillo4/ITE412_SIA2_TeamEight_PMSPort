@@ -1,27 +1,37 @@
-const { sendMessage } = require("./queue");
+const { sendMessage, getQueueLength } = require("./queue");
 
 const bookings = [
     {
-        passenger: "Juan Dela Cruz",
+        passengerName: "Juan Dela Cruz",
         amount: 1500,
-        trip: "PMS-001"
+        route: "Pinamalayan - Marinduque",
+        travelDate: "2026-10-15",
+        status: "Pending"
     },
     {
-        passenger: "Maria Santos",
+        passengerName: "Maria Santos",
         amount: 3000,
-        trip: "PMS-002"
+        route: "Marinduque - Sibale",
+        travelDate: "2026-10-16",
+        status: "Pending"
     },
     {
-        passenger: "Pedro Reyes",
+        passengerName: "Pedro Reyes",
         amount: 5000,
-        trip: "PMS-003"
+        route: "Pinamalayan - Marinduque",
+        travelDate: "2026-10-17",
+        status: "Pending"
     }
 ];
+
+console.log("Submitting booking requests to the queue...\n");
 
 bookings.forEach((booking) => {
     sendMessage(booking);
 
     console.log(
-        `Booking request submitted: {passenger: ${booking.passenger}, amount: ${booking.amount}, trip: ${booking.trip}}`
+        `Booking request submitted: {passengerName: ${booking.passengerName}, amount: ${booking.amount}, route: ${booking.route}, travelDate: ${booking.travelDate}, status: ${booking.status}}`
     );
 });
+
+console.log(`\nQueue size after submission: ${getQueueLength()}`);
